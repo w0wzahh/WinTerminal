@@ -1,0 +1,589 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Windows 95 + Terminal hybrid color scheme */
+  --background: oklch(0.35 0.02 220); /* Win95 teal-gray background */
+  --foreground: oklch(0.95 0.01 145); /* Bright terminal green text */
+  --card: oklch(0.75 0.01 220); /* Win95 gray */
+  --card-foreground: oklch(0.15 0.01 180);
+  --popover: oklch(0.7 0.01 220);
+  --popover-foreground: oklch(0.15 0.01 180);
+  --primary: oklch(0.65 0.18 145); /* Terminal green */
+  --primary-foreground: oklch(0.08 0.01 180);
+  --secondary: oklch(0.65 0.02 220); /* Win95 button gray */
+  --secondary-foreground: oklch(0.15 0.01 180);
+  --muted: oklch(0.55 0.01 220);
+  --muted-foreground: oklch(0.25 0.05 180);
+  --accent: oklch(0.45 0.08 220); /* Win95 title bar blue */
+  --accent-foreground: oklch(0.95 0.01 145);
+  --destructive: oklch(0.45 0.15 25);
+  --destructive-foreground: oklch(0.92 0.01 60);
+  --border: oklch(0.45 0.02 220);
+  --input: oklch(0.85 0.01 220);
+  --ring: oklch(0.65 0.18 145);
+  --radius: 0rem;
+  --win95-light: oklch(0.95 0.01 220); /* Win95 highlight */
+  --win95-dark: oklch(0.25 0.02 220); /* Win95 shadow */
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+  --background: oklch(0.12 0.01 180);
+  --foreground: oklch(0.75 0.15 145);
+  --card: oklch(0.12 0.02 180);
+  --card-foreground: oklch(0.72 0.14 145);
+  --popover: oklch(0.1 0.015 180);
+  --popover-foreground: oklch(0.75 0.15 145);
+  --primary: oklch(0.65 0.18 145);
+  --primary-foreground: oklch(0.08 0.01 180);
+  --secondary: oklch(0.18 0.03 180);
+  --secondary-foreground: oklch(0.75 0.15 145);
+  --muted: oklch(0.15 0.02 180);
+  --muted-foreground: oklch(0.45 0.08 145);
+  --accent: oklch(0.55 0.12 145);
+  --accent-foreground: oklch(0.08 0.01 180);
+  --destructive: oklch(0.45 0.15 25);
+  --destructive-foreground: oklch(0.92 0.01 60);
+  --border: oklch(0.25 0.05 145);
+  --input: oklch(0.15 0.03 180);
+  --ring: oklch(0.65 0.18 145);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(0.269 0 0);
+  --sidebar-ring: oklch(0.439 0 0);
+}
+
+@theme inline {
+  /* Classic Windows 95 system font */
+  --font-sans: "MS Sans Serif", "Microsoft Sans Serif", "Courier New", monospace;
+  --font-mono: "Courier New", "Courier", "Consolas", monospace;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(ellipse at center, transparent 0%, rgba(0, 0, 0, 0.2) 100%);
+    pointer-events: none;
+    z-index: 9998;
+    will-change: transform;
+  }
+
+  /* Subtle scanlines overlay for CRT effect */
+  body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.03),
+      rgba(0, 0, 0, 0.03) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+    pointer-events: none;
+    z-index: 9999;
+    will-change: transform;
+  }
+
+  /* Windows 95 beveled border style */
+  .win95-border {
+    border: 2px solid;
+    border-color: var(--win95-light) var(--win95-dark) var(--win95-dark) var(--win95-light);
+    box-shadow: inset 1px 1px 0 var(--win95-light), inset -1px -1px 0 var(--win95-dark);
+  }
+
+  .win95-inset {
+    border: 2px solid;
+    border-color: var(--win95-dark) var(--win95-light) var(--win95-light) var(--win95-dark);
+    box-shadow: inset -1px -1px 0 var(--win95-light), inset 1px 1px 0 var(--win95-dark);
+  }
+
+  /* Windows 95 window title bar */
+  .win95-titlebar {
+    background: linear-gradient(90deg, oklch(0.35 0.08 250) 0%, oklch(0.55 0.12 240) 100%);
+    padding: 2px 4px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  /* Windows 95 button style */
+  .win95-button {
+    border: 2px solid;
+    border-color: var(--win95-light) var(--win95-dark) var(--win95-dark) var(--win95-light);
+    background: var(--card);
+    padding: 2px 8px;
+    box-shadow: inset 1px 1px 0 var(--win95-light), inset -1px -1px 0 var(--win95-dark);
+    transition: all 0.1s;
+  }
+
+  .win95-button:active {
+    border-color: var(--win95-dark) var(--win95-light) var(--win95-light) var(--win95-dark);
+    box-shadow: inset -1px -1px 0 var(--win95-light), inset 1px 1px 0 var(--win95-dark);
+    transform: translate(1px, 1px);
+  }
+
+  /* Terminal text glow effect */
+  .terminal-glow {
+    text-shadow: 0 0 8px currentColor;
+  }
+
+  /* Lighter VHS chromatic aberration */
+  .vhs-aberration {
+    position: relative;
+  }
+
+  .vhs-aberration::before {
+    content: attr(data-text);
+    position: absolute;
+    left: -0.5px;
+    text-shadow: 0.5px 0 rgba(255, 0, 0, 0.3);
+    top: 0;
+    color: transparent;
+    overflow: hidden;
+    clip: rect(0, 900px, 0, 0);
+  }
+
+  .vhs-aberration::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 0.5px;
+    text-shadow: -0.5px 0 rgba(0, 255, 255, 0.3);
+    top: 0;
+    color: transparent;
+    overflow: hidden;
+    clip: rect(0, 900px, 0, 0);
+  }
+
+  /* Terminal box with Windows 95 styling */
+  .terminal-box {
+    background: oklch(0.08 0.01 180);
+    border: 2px solid;
+    border-color: var(--win95-dark) var(--win95-light) var(--win95-light) var(--win95-dark);
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.15), inset -1px -1px 0 var(--win95-light), inset 1px 1px 0 var(--win95-dark);
+    min-height: fit-content;
+    overflow: visible;
+  }
+
+  /* Phosphor glow on hover */
+  .phosphor-glow:hover {
+    text-shadow: 0 0 8px currentColor;
+    transition: text-shadow 0.2s ease;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Subtle window opening animation */
+  @keyframes window-open {
+    0% {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .window-open {
+    animation: window-open 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  /* Terminal typing effect */
+  @keyframes terminal-blink {
+    0%,
+    50% {
+      opacity: 1;
+    }
+    51%,
+    100% {
+      opacity: 0;
+    }
+  }
+
+  .cursor-blink {
+    animation: terminal-blink 0.8s step-end infinite;
+  }
+
+  /* Subtle fade in animation */
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .fade-in-up {
+    animation: fade-in-up 0.4s ease-out forwards;
+  }
+
+  /* Stagger delays for sequential animations */
+  .stagger-1 {
+    animation-delay: 0.1s;
+    opacity: 0;
+  }
+  .stagger-2 {
+    animation-delay: 0.2s;
+    opacity: 0;
+  }
+  .stagger-3 {
+    animation-delay: 0.3s;
+    opacity: 0;
+  }
+  .stagger-4 {
+    animation-delay: 0.4s;
+    opacity: 0;
+  }
+  .stagger-5 {
+    animation-delay: 0.5s;
+    opacity: 0;
+  }
+  .stagger-6 {
+    animation-delay: 0.6s;
+    opacity: 0;
+  }
+
+  /* Windows 95 desktop icon style */
+  .win95-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 8px;
+    transition: background 0.1s;
+  }
+
+  .win95-icon:hover {
+    background: rgba(0, 0, 139, 0.3);
+    outline: 1px dotted var(--primary);
+  }
+
+  .win95-icon:active {
+    background: rgba(0, 0, 139, 0.5);
+  }
+
+  /* Windows 95 taskbar style */
+  .win95-taskbar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    background: var(--card);
+    border-top: 2px solid;
+    border-color: var(--win95-light) transparent transparent transparent;
+    box-shadow: inset 0 1px 0 var(--win95-light);
+    z-index: 9997;
+    display: flex;
+    align-items: center;
+    padding: 0 4px;
+    gap: 4px;
+  }
+
+  .win95-start-button {
+    border: 2px solid;
+    border-color: var(--win95-light) var(--win95-dark) var(--win95-dark) var(--win95-light);
+    background: var(--card);
+    padding: 4px 12px;
+    box-shadow: inset 1px 1px 0 var(--win95-light), inset -1px -1px 0 var(--win95-dark);
+    font-weight: bold;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.1s;
+  }
+
+  .win95-start-button:active {
+    border-color: var(--win95-dark) var(--win95-light) var(--win95-light) var(--win95-dark);
+    box-shadow: inset -1px -1px 0 var(--win95-light), inset 1px 1px 0 var(--win95-dark);
+    transform: translate(1px, 1px);
+  }
+
+  .win95-taskbar-time {
+    margin-left: auto;
+    border: 2px solid;
+    border-color: var(--win95-dark) var(--win95-light) var(--win95-light) var(--win95-dark);
+    padding: 4px 12px;
+    font-size: 12px;
+    font-family: monospace;
+  }
+
+  /* Added Windows 95 Start Menu styles */
+  .win95-start-menu {
+    position: fixed;
+    bottom: 40px;
+    left: 4px;
+    width: 250px;
+    background: var(--card);
+    border: 2px solid;
+    border-color: var(--win95-light) var(--win95-dark) var(--win95-dark) var(--win95-light);
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    z-index: 9998;
+    display: flex;
+    animation: slide-up 0.15s ease-out;
+  }
+
+  @keyframes slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .win95-start-menu-sidebar {
+    width: 32px;
+    background: linear-gradient(180deg, oklch(0.35 0.08 250) 0%, oklch(0.55 0.12 240) 100%);
+    display: flex;
+    align-items: flex-end;
+    padding: 8px 4px;
+  }
+
+  .win95-start-menu-title {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    letter-spacing: 2px;
+  }
+
+  .win95-start-menu-content {
+    flex: 1;
+    padding: 4px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .win95-menu-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 12px;
+    text-align: left;
+    background: transparent;
+    border: none;
+    color: var(--card-foreground);
+    font-size: 13px;
+    transition: background 0.1s;
+  }
+
+  .win95-menu-item:hover {
+    background: oklch(0.35 0.08 250);
+    color: white;
+  }
+
+  .win95-menu-separator {
+    height: 1px;
+    background: var(--win95-dark);
+    margin: 4px 8px;
+    box-shadow: 0 1px 0 var(--win95-light);
+  }
+
+  /* Added desktop icon styles */
+  .desktop-icons {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    z-index: 10;
+  }
+
+  .desktop-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 8px;
+    width: 80px;
+    transition: background 0.1s;
+    cursor: pointer;
+  }
+
+  .desktop-icon:hover {
+    background: rgba(0, 0, 139, 0.3);
+    outline: 1px dotted var(--primary);
+  }
+
+  .desktop-icon:active {
+    background: rgba(0, 0, 139, 0.5);
+  }
+
+  .desktop-icon-image {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--card);
+    border: 2px solid;
+    border-color: var(--win95-light) var(--win95-dark) var(--win95-dark) var(--win95-light);
+    box-shadow: inset 1px 1px 0 var(--win95-light), inset -1px -1px 0 var(--win95-dark);
+  }
+
+  .desktop-icon-label {
+    font-size: 11px;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    text-align: center;
+    word-wrap: break-word;
+    max-width: 100%;
+  }
+
+  /* Added notification popup animation */
+  @keyframes notification-slide {
+    0% {
+      transform: translateX(400px);
+      opacity: 0;
+    }
+    10% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    90% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(400px);
+      opacity: 0;
+    }
+  }
+
+  .win95-notification {
+    position: fixed;
+    bottom: 60px;
+    right: 20px;
+    width: 300px;
+    background: var(--card);
+    border: 2px solid;
+    border-color: var(--win95-light) var(--win95-dark) var(--win95-dark) var(--win95-light);
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    z-index: 9999;
+    animation: notification-slide 4s ease-in-out forwards;
+  }
+
+  /* Loading bar animation for Win95 feel */
+  @keyframes loading-bar {
+    0% {
+      width: 0%;
+    }
+    100% {
+      width: 100%;
+    }
+  }
+
+  .loading-bar {
+    height: 20px;
+    background: var(--card);
+    border: 2px solid;
+    border-color: var(--win95-dark) var(--win95-light) var(--win95-light) var(--win95-dark);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .loading-bar::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: repeating-linear-gradient(
+      90deg,
+      var(--primary) 0px,
+      var(--primary) 10px,
+      oklch(0.45 0.12 145) 10px,
+      oklch(0.45 0.12 145) 20px
+    );
+    animation: loading-bar 2s ease-in-out;
+  }
+
+  /* Pixel cursor for authentic feel */
+  * {
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"><path d="M0,0 L0,12 L4,8 L7,14 L9,13 L6,7 L11,7 Z" fill="white" stroke="black" stroke-width="1"/></svg>')
+      0 0, auto;
+  }
+
+  a,
+  button {
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"><path d="M4,0 L4,4 L0,4 L0,12 L8,12 L8,8 L12,8 L12,0 Z M5,1 L11,1 L11,7 L8,7 L8,11 L1,11 L1,5 L5,5 Z" fill="white" stroke="black" stroke-width="1"/></svg>')
+      4 4, pointer;
+  }
+}
