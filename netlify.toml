@@ -9,6 +9,7 @@
   NODE_VERSION = "20"
   NEXT_TELEMETRY_DISABLED = "1"
   CI = "true"
+  NODE_OPTIONS = "--max-old-space-size=4096"
 
 [[headers]]
   for = "/*"
