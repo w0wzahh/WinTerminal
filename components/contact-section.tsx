@@ -1,6 +1,6 @@
 "use client"
 
-import { Github, Mail, Terminal, Minus, Square, X } from "lucide-react"
+import { Github, Mail, Terminal, Minus, Square, X, MessageSquare } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
 
 export function ContactSection() {
@@ -90,11 +90,21 @@ export function ContactSection() {
               </a>
 
               <a
-                href="mailto:contact@w0wzahh.dev"
+                href="mailto:emrebelgrad@gmail.com"
                 className="flex items-center gap-3 win95-button px-6 py-3 text-card-foreground font-mono text-sm hover:bg-muted transition-colors"
               >
                 <Mail className="w-5 h-5" />
-                <span>[EMAIL] contact@w0wzahh.dev</span>
+                <span>[EMAIL] emrebelgrad@gmail.com</span>
+              </a>
+
+              <a
+                href="https://discord.com/users/w0wzahh"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 win95-button px-6 py-3 text-card-foreground font-mono text-sm hover:bg-muted transition-colors"
+              >
+                <MessageSquare className="w-5 h-5" />
+                <span>[DISCORD] @w0wzahh</span>
               </a>
             </div>
           </div>

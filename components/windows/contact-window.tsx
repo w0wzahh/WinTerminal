@@ -1,6 +1,6 @@
 "use client"
 
-import { Mail, Github, Terminal, Minus, Square, X } from "lucide-react"
+import { Mail, Github, Terminal, Minus, Square, X, MessageSquare } from "lucide-react"
 
 interface ContactWindowProps {
   onClose: () => void
@@ -74,13 +74,26 @@ export function ContactWindow({ onClose, onMinimize, onToggleMaximize, isMaximiz
                     </a>
 
                     <a
-                      href="mailto:contact@w0wzahh.dev"
+                      href="mailto:emrebelgrad@gmail.com"
                       className="flex items-center gap-4 p-4 win95-border bg-card hover:bg-muted transition-colors group"
                     >
                       <Mail className="w-6 h-6 text-primary group-hover:scale-110 transition-transform" />
                       <div>
                         <div className="font-mono text-sm text-foreground mb-1">EMAIL</div>
-                        <div className="font-mono text-xs text-muted-foreground">contact@w0wzahh.dev</div>
+                        <div className="font-mono text-xs text-muted-foreground">emrebelgrad@gmail.com</div>
+                      </div>
+                    </a>
+
+                    <a
+                      href="https://discord.com/users/w0wzahh"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-4 p-4 win95-border bg-card hover:bg-muted transition-colors group"
+                    >
+                      <MessageSquare className="w-6 h-6 text-primary group-hover:scale-110 transition-transform" />
+                      <div>
+                        <div className="font-mono text-sm text-foreground mb-1">DISCORD</div>
+                        <div className="font-mono text-xs text-muted-foreground">@w0wzahh</div>
                       </div>
                     </a>
                   </div>
